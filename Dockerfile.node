@@ -1,0 +1,10 @@
+FROM node:12
+
+WORKDIR /root/app
+
+COPY package*.json /root/app/
+RUN npm install
+
+COPY . /root/app/
+
+ENTRYPOINT "/root/app/init/configure-node.sh"

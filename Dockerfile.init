@@ -1,0 +1,6 @@
+FROM gcr.io/project-igs-hub/swarm/init:next
+
+COPY . /root/app
+RUN openssl dhparam -out /root/dhparams.pem 2048
+
+ENTRYPOINT "/root/app/init/configure.sh"

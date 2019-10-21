@@ -1,0 +1,103 @@
+swagger: "2.0"
+info:
+  title: "OpenAPI"
+  description: ""
+  version: "2.0.0"
+host: "e"
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+schemes:
+  # Uncomment the next line if you configure SSL for this API.
+  #- "https"
+  - "http"
+paths:
+  # Test API responds
+  "/echo":
+    post:
+      description: "Echo back a given message."
+      operationId: "echo"
+      responses:
+        200:
+          description: "Echo"
+          schema:
+            items:
+              $ref: "#/definitions/echoMessage"
+  # Test request to IGS - response with data stored in IGS
+  "/api/v1/networkstatus/health/local/test":
+    get:
+      description: "Retrieves network status - local storage for testing purposes."
+      operationId: "get"
+      responses:
+        200:
+          description: "Network status test"
+          schema:
+            $ref: "#/definitions/retrievalSuccessResponse"
+  # NSS network devices status
+  "/api/v1/nss/orgs/{org_id}/devices/status":
+    get:
+      description: "Retrieves network devices status from Network Model Services"
+      operationId: "getNetworkDeviceStatus"
+      responses:
+        200:
+          description: "Successful retrieval"
+          schema:
+            $ref: "#/definitions/retrievalSuccessResponse"
+        401:
+          description: "Unsuccessful no devices found"
+          schema:
+            $ref: "#/definitions/retrievalFailureResponse"
+        "default":
+          description: "Unexpected error"
+          schema:
+            $ref: "#/definitions/unexpectedErrorResponse"
+    parameters:
+      - name: "org_id"
+        in: path
+        description: "ID of an organization"
+        required: true
+        type: string
+definitions:
+  echoMessage:
+    type: object
+    properties:
+      message:
+        type: string
+  retrievalSuccessResponse:
+    type: object
+    properties:
+      message:
+        type: string
+  retrievalFailureResponse:
+    type: object
+    properties:
+      message:
+        type: string
+  updateSuccessResponse:
+    type: object
+    properties:
+      message:
+        type: string
+  updateFailureResponse:
+    type: object
+    properties:
+      message:
+        type: string
+  unexpectedErrorResponse:
+    type: object
+    properties:
+      message:
+        type: string
+  updateErrorResponse:
+    type: object
+    properties:
+      message:
+        type: string
+security:
+  - api_key: []
+securityDefinitions:
+  api_key:
+    type: "apiKey"
+    name: "key"
+    in: "query"
