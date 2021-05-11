@@ -9,15 +9,6 @@ const app = express();
 const router = new express.Router();
 const bodyParser = require("body-parser");
 
-// Adds SSL
-// const https = require("https");
-// const fs = require("fs");
-//
-// const options = {
-//     key: fs.readFileSync("./config/env/key.pem"),
-//     cert: fs.readFileSync("./config/env/chain.pem")
-// };
-
 // Test routes
 const TestRouter = require("./config/routes/test.routes.config");
 const ServicesRouter = require("./config/routes/general.routes.config");
@@ -38,13 +29,13 @@ NmsRouter.routesConfig(app, router);
 NetworkStatusRouter.routesConfig(app, router);
 
 // Adds SSL
-// https.createServer(options, app).listen(configPort);
-//
-// if (module === require.main) {
-//     https.createServer(options, app).listen(configPort, function () {
-//         console.log("server running on port %s", configPort);
-//     });
-// }
+https.createServer(options, app).listen(configPort);
+
+if (module === require.main) {
+    https.createServer(options, app).listen(configPort, function () {
+       console.log("server running on port %s", configPort);
+    });
+}
 
 if (module === require.main) {
     app.listen(configPort, function () {
