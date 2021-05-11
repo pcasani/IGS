@@ -5,9 +5,6 @@
 const request = require('request');
 const {Buffer} = require('safe-buffer');
 
-// Used for SSL
-// const fs = require("fs");
-
 const networkStatusAddress = process.env.NETWORK_STATUS;
 const microServicesAuthorizationKey = process.env.MS_AUTHORIZATION_KEY;
 const microServicesAuthorizationValue = process.env.MS_AUTHORIZATION_VALUE;
@@ -41,7 +38,6 @@ exports.getNetworkDeviceMetrics = function (req, res) {
         });
 };
 
-
 /**
  * Get Network device status
  * @param req
@@ -67,34 +63,3 @@ exports.getNetworkDeviceStatus = function (req, res) {
             res.statusCode();
         });
 };
-
-
-
-// Adds SSL
-// exports.getNetworkDeviceMetrics = function (req, res) {
-//
-//     const {orgId, deviceId} = req.params;
-//
-//     request.get(
-//         {
-//             url: `${networkStatusAddress}/api/v1/orgs/${orgId}/devices/${deviceId}/metrics`,
-//             agentOptions: {
-//                 key: fs.readFileSync("../../../../config/env/key.pem"),
-//                 cert: fs.readFileSync("../../../../config/env/chain.pem")
-//             },
-//             json: true
-//         }
-//     )
-//          .headers(apiKeyCode)
-//         .on("response", function (response) {
-//             console.log(response.statusCode);
-//             res.send({
-//                 success: "true",
-//                 message: "Network device groups data retrieve successfully",
-//                 health: response
-//             });
-//         })
-//         .on("error", function () {
-//             res.statusCode();
-//         });
-// };
