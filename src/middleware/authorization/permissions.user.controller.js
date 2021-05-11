@@ -4,7 +4,6 @@ module.exports = {
 };
 
 /**
- * TODO implement user type permissions - validate authorization
  * @param roles
  * @returns {Promise<Function[]>}
  */
@@ -27,7 +26,6 @@ async function validateAuthorization(roles = []) {
 }
 
 /**
- * TODO implement user type permissions - check authorization values in payload
  * @param req
  * @param res
  * @param next
