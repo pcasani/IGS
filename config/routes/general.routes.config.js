@@ -1,18 +1,8 @@
 "use strict";
 
-const AuthTokenGoogle = require("../../src/middleware/validation/auth.token.google.js");
-
-//const AuthTokenUMS = require("../../src/middleware/validation/auth.token.ums.js");
-//const AuthPayloadUMS = require("../../src/middleware/validation/auth.payload.ums.js");
-
+const AuthTokenGoogle = require("../../src/middleware/validation/auth.token.google.js")
 const VerityUser = require("../../src/middleware/validation/auth.token.ums.js");
 const InitializeToken = require("../../src/middleware/authentication/auth.initialize.token.js");
-
-/**
- * Retrieve userLocalTest permissions
- * TODO
- * //const PermissionUser = require("../src/authorization/controllers/permissions.user.test.jst.js");
- */
 
 exports.routesConfig = function (app) {
 
@@ -37,7 +27,6 @@ exports.routesConfig = function (app) {
     app.post("/api/v1/posts", [
         VerityUser.displayJWT
     ]);
-
 
 };
 
