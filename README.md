@@ -7,15 +7,6 @@ IGS functions as the single point of entry and portal middleware.
 It exposes data endpoints required by the front-end application and co-ordinates requests among the relevant micro services.
 There are minimal testing scripts.
 
-## Technologies
-
-Project is created with:
-* Lorem version: 12.3
-* Ipsum version: 2.33
-* Ament library version: 999
-
-
-
 ## Before using
     
   - Please make sure that you have:
