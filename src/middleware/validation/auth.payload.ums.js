@@ -49,7 +49,6 @@ exports.checkTokenExpiration = function (req, res, next) {
     /**
      * Other expiration parameters
      * @type {number | registered_claims_schema.iat | {isValid, message} | registeredClaimsSchema.iat}
-     * TODO
      */
     let issuedAt = req.jwt.iat;
     let audience = req.jwt.aud;
