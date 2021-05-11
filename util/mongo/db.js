@@ -1,8 +1,5 @@
 const mongoose = require('mongoose');
 
-//const host = require("../../../util/config/env.config").mongoDatabase.host;
-//const database = require("../../../util/config/env.config").mongoDatabase.db;
-
 const host = process.env.DATABASE_HOST;
 const database = process.env.DATABASE;
 
